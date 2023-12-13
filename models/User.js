@@ -8,27 +8,28 @@ const userSchema = new Schema({
     type: String,
     unique: true,
     required: true,
-    trim: true
+    trim: true,
+    index: true, // add index to username
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    // use regex to validate correct email format, thank you challeneg 18
-    match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/
+    match: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
+    index: true, // add index to email
   },
   thoughts: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Thought'
-    }
+      ref: 'Thought',
+    },
   ],
   friends: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
-  ]
+      ref: 'User',
+    },
+  ],
 });
 
 // get the total count of friends on retrieval using the .virtual() function
