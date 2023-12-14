@@ -1,4 +1,4 @@
-// all my routes are in the routes folder, and I have an index.js file in there that imports and uses all of my routes. This is what that looks like:
+// all my routes are in the routes folder, and I have an index.js file in there that imports and uses all of my routes. 
 
 const express = require('express');
 const router = express.Router();

@@ -5,15 +5,15 @@ const { User, Thought } = require('./models');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+// middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Importing my routes
+// importing my routes
 const usersRoutes = require('./routes/api/users');
 const thoughtsRoutes = require('./routes/api/thoughts');
 
-// Using my routes
+// using my routes
 app.use('/api/users', usersRoutes);  
 app.use('/api/thoughts', thoughtsRoutes);  
 

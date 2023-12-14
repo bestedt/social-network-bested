@@ -1,24 +1,24 @@
-// Importing my dependencies
+// importing my dependencies
 const connection = require('../config/connection');
 const { User, Thought } = require('../models');
 const { users, thoughts, reactions } = require('./data');
 
-// Connect to the database
+// connecting to my database
 const seedDatabase = async () => {
   try {
-    // Delete existing data
+    // delete existing data so we can start fresh
     await User.deleteMany({});
     await Thought.deleteMany({});
 
-    // Seed users
+    // seed users that are in my data file
     const seededUsers = await User.create(users);
 
-    // Seed thoughts with embedded reactions
+    // seed thoughts with the reactions i created in my data file
     const seededThoughts = await Thought.create(
       thoughts.map((thought, index) => ({
         ...thought,
         username: seededUsers[0]._id,
-        reactions: [reactions[index]] // Embed reaction directly into thought
+        reactions: [reactions[index]] 
       }))
     );
 
@@ -26,10 +26,10 @@ const seedDatabase = async () => {
   } catch (error) {
     console.error('Error seeding database:', error);
   } finally {
-    // Close the database connection
+    // close the database connection
     await connection.close();
   }
 };
 
-// Call the function when the file is run
+// calling the function when the file is run
 seedDatabase();
