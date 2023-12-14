@@ -3,7 +3,7 @@ const addZero = (num) => (num < 10 ? `0${num}` : num);
 // this is the function that will be exported and called in the controllers
 module.exports = (timestamp) => {
   const date = new Date(timestamp);
-
+// here are the variables that will be used to format the date that i want
   const year = date.getFullYear();
   const month = addZero(date.getMonth() + 1);
   const day = addZero(date.getDate());

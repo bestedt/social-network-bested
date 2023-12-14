@@ -49,7 +49,7 @@ const thoughtsController = {
     try {
       const thought = await Thought.findByIdAndDelete(req.params.id);
       if (thought) {
-        // Remove thought reference from the associated user's thoughts array
+        // remove thought reference from the associated user's thoughts array
         await User.findByIdAndUpdate(
           thought.userId,
           { $pull: { thoughts: req.params.id } },
